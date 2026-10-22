@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import NavBar from "@/Components/NavBar";
+import NavBar from "@/Components/nav-releted/NavBar";
+import NavLinkCat from "@/Components/nav-releted/NavLinkCat";
+import Marquee from "@/Components/nav-releted/Marquee";
 
 const anek_bangla = Anek_Bangla({
   variable: '--font-anek-bangla',
@@ -23,9 +25,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en" data-theme="light"
       className={`${anek_bangla.className} ${anek_bangla.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-base-200">
         
         <NavBar/>
+        <NavLinkCat/>
+        <Marquee/>
         
         {children}
       

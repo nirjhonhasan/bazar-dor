@@ -1,6 +1,10 @@
 import Image from "next/image";
+import DateHunter from '@/Components/DateHunter'
 
 const NavBar = () => {
+
+
+
     return (
         <div className="container mx-auto py-5">
 
@@ -16,7 +20,7 @@ const NavBar = () => {
                     />
                     <div>
                         <h2 className="text-3xl font-bold">বাজার দর</h2>
-                        <p className="text-gray-500 font-semibold">এখানে তারিখ হবে</p>
+                        <h2 className="text-gray-500 font-semibold"><DateHunter/></h2>
                     </div>
                 </div>
 
@@ -27,10 +31,7 @@ const NavBar = () => {
             </div>
 
 
-            {/* এখান থেকে ক্যাটাগরি এর সেকশন শুরু হবে  */}
-            {/* এখান থেকে ক্যাটাগরি এর সেকশন শুরু হবে  */}
-            {/* এখান থেকে ক্যাটাগরি এর সেকশন শুরু হবে  */}
-            
+        
 
         </div>
     );
