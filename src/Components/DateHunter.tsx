@@ -1,6 +1,5 @@
-"use client";
+'use client';
 
-import React from 'react';
 
 const CurrentDate = () => {
     const date = new Date().toLocaleDateString('bn-BD', {

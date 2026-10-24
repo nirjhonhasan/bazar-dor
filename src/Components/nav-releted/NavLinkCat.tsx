@@ -8,11 +8,12 @@ const NavLinkCat = async () => {
 
     return (
         <div className='bg-white border border-gray-100 '>
+            
             <div className="flex justify-start gap-6 py-3 container mx-auto">
                 {
-                    navCatData.map((catItem:navCatTypes, i:number) => {
-                        return <div key={i}>
-                            <Link href='/'>
+                    navCatData.map((catItem:navCatTypes) => {
+                        return <div key={`${catItem.slug}`}>
+                            <Link href={`/category/${catItem.slug}`}>
                                 <h2 className='hover:text-black/80 font-semibold'>
                                     <span className="mr-2">
                                         {catItem.icon}

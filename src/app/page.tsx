@@ -1,8 +1,15 @@
+import AllProducts from "@/Components/AllProducts";
+import Banner from "@/Components/Banner";
+import HigherPrice from "@/Components/HigherPrice";
+import LowerPrice from "@/Components/LowerPrice";
 
 const page = () => {
   return (
     <div>
-      Home Page is here
+      <Banner/>
+      <HigherPrice/>
+      <LowerPrice/>
+      <AllProducts/>
     </div>
   );
 };

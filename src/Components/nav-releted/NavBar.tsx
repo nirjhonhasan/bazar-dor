@@ -1,5 +1,8 @@
 import Image from "next/image";
 import DateHunter from '@/Components/DateHunter'
+import SignIn from "../authentication/button/Sign-In";
+import SignUp from "../authentication/button/Sign-up";
+import Link from "next/link";
 
 const NavBar = () => {
 
@@ -10,7 +13,7 @@ const NavBar = () => {
 
             <div className="flex justify-between items-center">
 
-                <div className="flex items-center gap-3">
+                <Link href='/' className="flex items-center gap-3">
                     <Image
                         height={40}
                         width={80}
@@ -22,10 +25,11 @@ const NavBar = () => {
                         <h2 className="text-3xl font-bold">বাজার দর</h2>
                         <h2 className="text-gray-500 font-semibold"><DateHunter/></h2>
                     </div>
-                </div>
+                </Link>
 
-                <div>
-                    Profile
+                <div className="flex items-center gap-3">
+                    <SignIn/>
+                    <SignUp/>
                 </div>
 
             </div>
