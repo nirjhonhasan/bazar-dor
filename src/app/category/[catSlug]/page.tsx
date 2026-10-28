@@ -1,4 +1,5 @@
 import ItemCard from "@/Components/ItemCard";
+import ProductType from "@/Types/ProductType";
 
 
 interface PageProps {
@@ -26,7 +27,7 @@ const page = async ({ params }: PageProps) => {
 
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {catData.map((item) => (
+                {catData.map((item:ProductType) => (
                     <ItemCard key={item.id} item={item} />
                 ))}
             </div>

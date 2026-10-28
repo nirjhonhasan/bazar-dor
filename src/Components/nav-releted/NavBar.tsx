@@ -1,11 +1,9 @@
 import Image from "next/image";
-import DateHunter from '@/Components/DateHunter'
-import SignIn from "../authentication/button/Sign-In";
-import SignUp from "../authentication/button/Sign-up";
 import Link from "next/link";
+import DateHunter from '@/Components/DateHunter'
+import NavButton from "../authentication/NavButton";
 
 const NavBar = () => {
-
 
 
     return (
@@ -28,8 +26,7 @@ const NavBar = () => {
                 </Link>
 
                 <div className="flex items-center gap-3">
-                    <SignIn/>
-                    <SignUp/>
+                    <NavButton/>
                 </div>
 
             </div>

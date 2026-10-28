@@ -18,7 +18,7 @@ interface ItemCardProps {
 
 const ItemCard = ({ item }: ItemCardProps) => {
 
-  console.log(item);
+
   const isUp = item?.change?.dir === "up";
 
   return (

@@ -1,4 +1,5 @@
-import React from 'react';
+import MarketType from '@/Types/MarketType';
+
 
 interface PageProps {
     params: Promise<{
@@ -14,7 +15,7 @@ const ProductDetailsPage = async ({ params }: PageProps) => {
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
-            
+
 
 
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-center mb-8">
@@ -33,7 +34,8 @@ const ProductDetailsPage = async ({ params }: PageProps) => {
                     </div>
                 </div>
 
-                {/* ডানপাশের আজকের দাম কার্ড */}
+
+
                 <div className="mt-4 md:mt-0 bg-gray-50 border border-gray-100 rounded-xl px-6 py-3 text-center">
                     <span className="text-xs text-gray-500 block">আজকের দাম</span>
                     <span className="text-2xl font-bold text-gray-800">{itemDetails.today}</span>
@@ -52,14 +54,14 @@ const ProductDetailsPage = async ({ params }: PageProps) => {
                     <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
                         <span className="text-xs text-gray-500">সর্বনিম্ন দাম</span>
                         <div className="text-xl font-bold text-green-600 mt-1">
-                            {Math.min(...itemDetails.markets.map((m) => m.min))} টাকা
+                            {Math.min(...itemDetails.markets.map((m: MarketType) => m.min))} টাকা
                         </div>
                         <span className="text-xs text-gray-400 mt-1 block">সবচেয়ে কম দামের বাজার</span>
                     </div>
                     <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
                         <span className="text-xs text-gray-500">সর্বাধিক দাম</span>
                         <div className="text-xl font-bold text-red-500 mt-1">
-                            {Math.max(...itemDetails.markets.map((m) => m.max))} টাকা
+                            {Math.max(...itemDetails.markets.map((m: MarketType) => m.max))} টাকা
                         </div>
                         <span className="text-xs text-gray-400 mt-1 block">সবচেয়ে বেশি দামের বাজার</span>
                     </div>
@@ -78,7 +80,7 @@ const ProductDetailsPage = async ({ params }: PageProps) => {
 
             <div>
                 <h2 className="text-lg font-bold text-gray-800 mb-4">বাজারভিত্তিক আজকের দাম</h2>
-                
+
                 <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
                     <table className="w-full text-left border-collapse">
                         <thead>
@@ -92,13 +94,13 @@ const ProductDetailsPage = async ({ params }: PageProps) => {
                         </thead>
                         <tbody>
                             {
-                                itemDetails.markets.map((marketItem, index: number) => {
-                                   
+                                itemDetails.markets.map((marketItem: MarketType, index: number) => {
+
                                     const avgPrice = ((marketItem.min + marketItem.max) / 2).toFixed(1);
 
                                     return (
-                                        <tr 
-                                            key={index} 
+                                        <tr
+                                            key={index}
                                             className="border-b border-gray-100 odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition-colors text-gray-800 text-sm"
                                         >
                                             <td className="py-3.5 px-4">{marketItem.market}</td>

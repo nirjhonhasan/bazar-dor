@@ -1,3 +1,4 @@
+import ProductType from "@/Types/ProductType";
 import ItemCard from "../../Components/ItemCard";
 
 const AllProducts = async () => {
@@ -16,7 +17,7 @@ const AllProducts = async () => {
             <div className="grid grid-cols-3 gap-6">
 
                 {
-                    allProducts.map((item) => {
+                    allProducts.map((item:ProductType) => {
                         return <div key={item.id}>
                             <ItemCard item={item} />
                         </div>

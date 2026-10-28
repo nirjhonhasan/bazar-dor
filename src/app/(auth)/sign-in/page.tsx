@@ -1,23 +1,49 @@
-import React from 'react';
+"use client";
+
+import { authClient } from "@/lib/auth-client";
 
 const SignInPage = () => {
+
+
+        const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+    
+    
+            const user = Object.fromEntries(formData.entries()) as {
+                email: string;  
+                password: string;
+            };
+
+    
+            const { data, error } = await authClient.signIn.email({
+                ...user,
+                callbackURL: '/'
+    
+            })
+            console.log(data, error);
+
+        }
+    
+
     return (
-        <div className='flex flex-col mx-auto text-center'>
+        <div className='flex flex-col mx-auto text-center my-18'>
 
             <h2 className='text-2xl font-bold'>সাইন ইন</h2>
             <p>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
-            <form className="bg-white flex flex-col border-base-300 rounded-box border p-4">
+            <form onSubmit={onSubmit}
+            className="bg-white flex flex-col border-base-300 rounded-box border p-6 my-8">
 
                 <label className="label">Email</label>
-                <input type="email" className="input" placeholder="Email" />
+                <input type="email" className="input" placeholder="Email" name="email"/>
 
-                <label className="label">Password</label>
-                <input type="password" className="input" placeholder="Password" />
+                <label className="label mt-4">Password</label>
+                <input type="password" className="input" placeholder="Password" name="password"/>
 
-                <button className="btn btn-neutral mt-4">Login</button>
+                <button type="submit"  className="btn btn-neutral mt-6">Login</button>
             </form>
         </div>
     );
-};
+};  
 
 export default SignInPage;
