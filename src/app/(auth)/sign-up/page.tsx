@@ -2,8 +2,8 @@
 
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
+import { redirect, useRouter } from 'next/navigation';
+import toast, { ToastBar } from 'react-hot-toast';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -18,14 +18,14 @@ const SignUpPage = () => {
 
         const user = Object.fromEntries(formData.entries()) as {
             name: string;
-            email: string;  
+            email: string;
             password: string;
             confirmPassword: string;
         };
 
 
         if (user.password !== user.confirmPassword) {
-            alert("পাসওয়ার্ড দুটি মিলছে না!");
+            toast.error("পাসওয়ার্ড দুটি মিলছে না!");
             return;
         }
 
@@ -39,8 +39,38 @@ const SignUpPage = () => {
             router.push("/")
         }
 
-        toast.success('Sign up successfull !')
+        toast.success('Sign up successfull !');
     }
+
+
+
+    const signUpWithGoogle = async () => {
+        const {data, error} = await authClient.signIn.social({
+            provider: "google",
+        });
+
+        if (data) toast.success("Login with Goggle is successfull");
+        if (error) {
+            toast.error(error?.message || "Google sign-in failed!");
+            return;
+        }
+    };
+
+
+    const signUpWithGitHub = async () => {
+        const { data, error } = await authClient.signIn.social({
+            provider: "github",
+            callbackURL: "/",
+        });
+
+        if(data) toast.success("Login with Github is Successfull");
+
+        if (error) {
+            toast.error(error.message || "GitHub sign-in failed!");
+            return;
+        }
+    };
+
 
 
 
@@ -73,12 +103,15 @@ const SignUpPage = () => {
 
                 <div className="divider">অথবা</div>
 
+
                 <div className='flex items-center gap-3'>
-                    <Link href='' className='flex gap-0.5 items-center border border-gray-300 rounded-full px-2 py-1 hover:bg-gray-50'>
+                    <Link onClick={signUpWithGoogle}
+                        href='' className='flex gap-0.5 items-center border border-gray-300 rounded-full px-2 py-1 hover:bg-gray-50'>
                         <FcGoogle />
                         <button> Google দিয়ে চালিয়ে যান</button>
                     </Link>
-                    <Link href='' className='flex items-center gap-0.5 border border-gray-300 rounded-full px-2 py-1 hover:bg-gray-50'>
+                    <Link onClick={signUpWithGitHub}
+                        href='' className='flex items-center gap-0.5 border border-gray-300 rounded-full px-2 py-1 hover:bg-gray-50'>
                         <FaGithub />
                         <button type='submit'> GitHub দিয়ে চালিয়ে যান</button>
                     </Link>
