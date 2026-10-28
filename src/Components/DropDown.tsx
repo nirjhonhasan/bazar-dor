@@ -3,6 +3,7 @@
 import { authClient, useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProfileDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +13,10 @@ export default function ProfileDropdown() {
 
   const handleSignout = async () =>{
           await authClient.signOut();
+          toast.error('Sign Out successfull !');
   }
   
-
+  
 
 
   return (

@@ -3,6 +3,7 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -38,7 +39,7 @@ const SignUpPage = () => {
             router.push("/")
         }
 
-        console.log(data, error);
+        toast.success('Sign up successfull !')
     }
 
 
