@@ -15,7 +15,7 @@ const NavBar = () => {
                     <Image
                         height={40}
                         width={80}
-                        src='/cartLogo.png'
+                        src="/cartLogo.png"
                         alt="Bazar Dor"
                         className="bg-green-800 rounded w-12 h-12 p-2"
                     />
