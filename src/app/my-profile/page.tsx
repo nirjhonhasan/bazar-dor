@@ -5,6 +5,14 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
+interface UserType {
+    id?: string;
+    name?: string;
+    email?: string;
+    image?: string | null;
+    [key: string]: unknown;
+}
+
 export default function MyProfile() {
     const router = useRouter();
 
@@ -31,7 +39,13 @@ export default function MyProfile() {
     );
 }
 
-function ProfileForm({ user, router }: { user: any; router: any }) {
+function ProfileForm({ 
+    user, 
+    router 
+}: { 
+    user: UserType; 
+    router: ReturnType<typeof useRouter> 
+}) {
     const [name, setName] = useState(user.name || "");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -84,22 +98,21 @@ function ProfileForm({ user, router }: { user: any; router: any }) {
                     </p>
                 </div>
 
-               
-               
+
                 <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8 mb-7">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
 
                         <div className="flex items-center gap-4">
                             <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white text-2xl font-bold">
-                                {user.name?.charAt(0).toUpperCase() || "U"}
+                                {typeof user.name === 'string' ? user.name.charAt(0).toUpperCase() : "U"}
                             </div>
 
                             <div>
                                 <h2 className="text-xl font-bold text-gray-800">
-                                    {user.name}
+                                    {String(user.name || "")}
                                 </h2>
                                 <p className="text-gray-500 mt-1">
-                                    {user.email}
+                                    {String(user.email || "")}
                                 </p>
                             </div>
                         </div>
@@ -113,7 +126,7 @@ function ProfileForm({ user, router }: { user: any; router: any }) {
                     </div>
                 </div>
 
-                
+
                 <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
                     <h2 className="text-xl font-bold text-gray-800 mb-6">
                         নাম হালনাগাদ করুন
