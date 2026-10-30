@@ -31,9 +31,7 @@ export default function MyProfile() {
     );
 }
 
-
-
-function ProfileForm({ user, router }: any) {
+function ProfileForm({ user, router }: { user: any; router: any }) {
     const [name, setName] = useState(user.name || "");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -41,7 +39,6 @@ function ProfileForm({ user, router }: any) {
     const handleUpdateName = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        toast.success(`Name has been changged successfully !`)
         if (!name.trim()) {
             setMessage("নাম লিখুন");
             return;
@@ -56,12 +53,13 @@ function ProfileForm({ user, router }: any) {
             });
 
             if (error) {
-                setMessage(error.message || "নাম আপডেট করা যায়নি");
+                setMessage(error.message || "নাম আপডেট করা যায়নি");
             } else {
-                setMessage("আপনার নাম সফলভাবে আপডেট হয়েছে!");
+                toast.success("Name has been changed successfully!");
+                setMessage("আপনার নাম সফলভাবে আপডেট হয়েছে!");
             }
         } catch {
-            setMessage("কিছু একটা সমস্যা হয়েছে");
+            setMessage("কিছু একটা সমস্যা হয়েছে");
         } finally {
             setLoading(false);
         }
@@ -86,7 +84,8 @@ function ProfileForm({ user, router }: any) {
                     </p>
                 </div>
 
-                {/* User Information */}
+               
+               
                 <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8 mb-7">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
 
@@ -114,7 +113,7 @@ function ProfileForm({ user, router }: any) {
                     </div>
                 </div>
 
-                {/* Update Name */}
+                
                 <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
                     <h2 className="text-xl font-bold text-gray-800 mb-6">
                         নাম হালনাগাদ করুন
