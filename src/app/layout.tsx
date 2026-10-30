@@ -29,20 +29,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-green-50">
 
-        <Suspense fallback="loading ...">
+        <Suspense fallback={null}>
           <NavBar />
           <NavLinkCat />
           <Marquee />
         </Suspense>
 
-        <main>
-          <Suspense fallback="Loading...">
+        <main className="flex-grow">
+          <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center"><span className="loading loading-spinner text-success"></span></div>}>
             {children}
           </Suspense>
         </main>
 
         <Footer />
-        <Toaster /> 
+        <Toaster />
       </body>
     </html>
   );
