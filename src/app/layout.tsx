@@ -6,6 +6,7 @@ import NavBar from "@/Components/nav-releted/NavBar";
 import NavLinkCat from "@/Components/nav-releted/NavLinkCat";
 import Marquee from "@/Components/nav-releted/Marquee";
 import Footer from "@/Components/Footer";
+import { Suspense } from "react";
 
 const anek_bangla = Anek_Bangla({
   variable: '--font-anek-bangla',
@@ -27,18 +28,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${anek_bangla.className} ${anek_bangla.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-green-50">
-        
-        <NavBar/>
-        <NavLinkCat/>
-        <Marquee/>
-        
-        
-          {children}
-        
-      
-      
-      <Footer/>
-      <Toaster />
+
+        <Suspense fallback="loading ...">
+          <NavBar />
+          <NavLinkCat />
+          <Marquee />
+        </Suspense>
+
+        <main>
+          <Suspense fallback="Loading...">
+            {children}
+          </Suspense>
+        </main>
+
+        <Footer />
+        <Toaster /> 
       </body>
     </html>
   );

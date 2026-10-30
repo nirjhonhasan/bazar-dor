@@ -76,7 +76,7 @@ const SignUpPage = () => {
 
 
     return (
-        <div className='flex flex-col mx-auto text-center'>
+        <div className='flex flex-col max-w-md mx-auto py-8 text-center'>
 
             <h2 className='text-2xl font-bold mt-5'>অ্যাকাউন্ট তৈরি করুন</h2>
             <p className='pb-5 text-gray-500'>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
@@ -86,17 +86,17 @@ const SignUpPage = () => {
                     className=" flex flex-col p-4">
 
                     <label className="label text-black">নাম</label>
-                    <input type="text" className="input" placeholder="Name" name="name" />
+                    <input type="text" className="input w-full" placeholder="Name" name="name"/>
 
                     <label className="label mt-5 text-black">ইমেইল</label>
-                    <input type="email" className="input" placeholder="Email" name="email" />
+                    <input type="email" className="input w-full" placeholder="Email" name="email" />
 
 
                     <label className="label mt-5 text-black">পাসওয়ার্ড</label>
-                    <input type="password" className="input" placeholder="Password" name="password" />
+                    <input type="password" className="input w-full" placeholder="Password" name="password" />
 
                     <label className="label mt-5 text-black">পাসওয়ার্ড নিশ্চিত করুন</label>
-                    <input type="password" className="input" placeholder="Confirm Password" name="confirmPassword" />
+                    <input type="password" className="input w-full" placeholder="Confirm Password" name="confirmPassword" />
 
                     <button className="btn submit bg-green-800 text-white font-bold mt-4">অ্যাকাউন্ট তৈরি করুন</button>
                 </form>
