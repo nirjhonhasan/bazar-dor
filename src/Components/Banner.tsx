@@ -23,7 +23,7 @@ const Banner = () => {
         </p>
 
 
-        <div>
+        <div className='mt-8'>
           <Link href='/all-products'
                 className='bg-[#008A45] hover:bg-[#007038] text-white font-medium px-6 py-2.5 rounded-lg shadow shadow-green-400 transition-all duration-200'>
                 সব পণ্য দেখুন
