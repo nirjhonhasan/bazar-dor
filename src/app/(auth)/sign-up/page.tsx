@@ -2,8 +2,8 @@
 
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import { redirect, useRouter } from 'next/navigation';
-import toast, { ToastBar } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 

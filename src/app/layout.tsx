@@ -35,11 +35,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Marquee />
         </Suspense>
 
-        <main className="flex-grow">
-          <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center"><span className="loading loading-spinner text-success"></span></div>}>
-            {children}
-          </Suspense>
-        </main>
+        <Suspense fallback={<div>Loading...</div>}>
+          {children}
+        </Suspense>
 
         <Footer />
         <Toaster />
